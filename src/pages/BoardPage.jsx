@@ -43,7 +43,7 @@ export default function BoardPage() {
 
   const handleCreate = async (data) => {
     const count = issues.length;
-    const newIssue = { ...data, key: `TK-${count + 1}`, reporter_id: user.id };
+    const newIssue = { ...data, key: `TK-${count + 1}` };
     const { data: created } = await supabase.from('issues').insert(newIssue).select().single();
     if (created) setIssues(prev => [created, ...prev]);
     setShowCreate(false);
